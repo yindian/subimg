@@ -165,6 +165,10 @@ int main(int argc, char* argv[])
    * The backward transform then goes from Bf to Aa again. That
    * variable is aliased as crosscors;
    */
+#undef FFTW_FORWARD
+#define FFTW_FORWARD 0
+#undef FFTW_BACKWARD
+#define FFTW_BACKWARD 0
   fftw_plan forwardA = fftw_plan_dft_r2c_2d(Asy,Asx,Aa,Af,FFTW_FORWARD | FFTW_ESTIMATE);
   fftw_plan forwardB = fftw_plan_dft_r2c_2d(Asy,Asx,Ba,Bf,FFTW_FORWARD | FFTW_ESTIMATE);
   double * crosscorrs = Aa;
